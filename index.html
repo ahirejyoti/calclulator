@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomeMatch – Find a home. Make it yours.</title>
+  <meta name="description" content="HomeMatch matches you with homes by your priorities — describe what you need in plain language and see the trade-offs, explained.">
+  <meta name="theme-color" content="#141c1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ───────────── Workspace navigation ───────────── -->
+  <aside class="sidebar" aria-label="Workspace">
+    <a class="brand" href="#" aria-label="HomeMatch home">
+      <span class="brand__mark"><img src="assets/icons/house-brand.svg" width="20" height="20" alt=""></span>
+      <span class="brand__name">HomeMatch</span>
+    </a>
+
+    <nav class="nav" aria-label="Your home journey">
+      <p class="eyebrow">Your home journey</p>
+      <a class="nav__item is-active" href="#discover" aria-current="page">
+        <img src="assets/icons/compass.svg" width="18" height="18" alt="">
+        <span class="nav__label">Discover</span>
+      </a>
+      <a class="nav__item" href="#saved">
+        <img src="assets/icons/heart-nav.svg" width="18" height="18" alt="">
+        <span class="nav__label">Saved homes</span>
+        <span class="nav__count" id="saved-count">6</span>
+      </a>
+      <a class="nav__item" href="#comparison">
+        <img src="assets/icons/columns-3.svg" width="18" height="18" alt="">
+        <span class="nav__label">Compare</span>
+        <span class="nav__count" id="compare-count">3</span>
+      </a>
+      <a class="nav__item" href="#preferences">
+        <img src="assets/icons/sliders-nav.svg" width="18" height="18" alt="">
+        <span class="nav__label">My preferences</span>
+      </a>
+    </nav>
+
+    <section class="recent" aria-label="Recent search">
+      <p class="eyebrow">Recent search</p>
+      <a class="recent__item" href="#discover">
+        <img src="assets/icons/history.svg" width="15" height="15" alt="">
+        <span class="recent__text">
+          <span class="recent__title">2BHK in Mumbai</span>
+          <span class="recent__meta">Under ₹1.5 Cr</span>
+        </span>
+      </a>
+    </section>
+
+    <div class="sidebar__spacer" aria-hidden="true"></div>
+
+    <aside class="assistant-note">
+      <img src="assets/icons/sparkles-note.svg" width="20" height="20" alt="">
+      <p class="assistant-note__title">A home that fits your life.</p>
+      <p class="assistant-note__body">Tell us what matters. We’ll help you see the trade-offs.</p>
+    </aside>
+
+    <hr class="sidebar__divider">
+
+    <button class="account" type="button" aria-label="Account menu for Aarav Shah">
+      <span class="account__avatar">AS</span>
+      <span class="account__profile">
+        <span class="account__name">Aarav Shah</span>
+        <span class="account__plan">Personal workspace</span>
+      </span>
+      <img src="assets/icons/chevron-down.svg" width="14" height="14" alt="">
+    </button>
+  </aside>
+
+  <!-- ───────────── Discovery workspace ───────────── -->
+  <main class="workspace" id="discover">
+
+    <!-- Search + understood preferences -->
+    <section class="search-section" aria-labelledby="page-title">
+      <header class="page-heading">
+        <div class="welcome">
+          <p class="welcome__label">Your next chapter starts here</p>
+          <h1 class="welcome__title" id="page-title">Find a home. Make it yours.</h1>
+        </div>
+        <div class="page-actions">
+          <span class="badge badge--muted">Illustrative demo</span>
+          <button class="btn btn--outline btn--lg" type="button" data-toast="Search saved — you’ll be notified about new matches.">
+            <img src="assets/icons/bookmark.svg" width="16" height="16" alt="">
+            Save this search
+          </button>
+          <button class="icon-btn icon-btn--lg" type="button" aria-label="Notifications" data-toast="You’re all caught up.">
+            <img src="assets/icons/bell.svg" width="18" height="18" alt="">
+          </button>
+        </div>
+      </header>
+
+      <form class="nl-search card" id="nl-search" role="search" aria-label="Describe your ideal home" autocomplete="off">
+        <div class="nl-search__input">
+          <span class="nl-search__mark" aria-hidden="true"><img src="assets/icons/sparkles-ai.svg" width="22" height="22" alt=""></span>
+          <div class="nl-search__prompt">
+            <label class="eyebrow" for="query">Describe your ideal home</label>
+            <input class="nl-search__query" id="query" name="query" type="text"
+                   value="I need a 2BHK near Mumbai with good connectivity, under ₹1.5 crore.">
+          </div>
+          <button class="nl-search__mic" type="button" aria-label="Search by voice" data-toast="Voice search isn’t part of this demo.">
+            <img src="assets/icons/mic.svg" width="20" height="20" alt="">
+          </button>
+          <button class="btn btn--primary btn--lg" type="submit">
+            <img src="assets/icons/arrow-right.svg" width="16" height="16" alt="">
+            Find my matches
+          </button>
+        </div>
+
+        <div class="criteria" id="preferences" aria-label="What the AI understood">
+          <span class="criteria__status">
+            <img src="assets/icons/check-check.svg" width="16" height="16" alt="">
+            AI understood
+          </span>
+          <span class="chip"><img src="assets/icons/indian-rupee.svg" width="14" height="14" alt=""><span class="chip__key">Budget</span><span class="chip__val">₹1.5 Cr</span></span>
+          <span class="chip"><img src="assets/icons/map-pin.svg" width="14" height="14" alt=""><span class="chip__key">Location</span><span class="chip__val">Mumbai</span></span>
+          <span class="chip"><img src="assets/icons/house-criterion.svg" width="14" height="14" alt=""><span class="chip__key">Property</span><span class="chip__val">2BHK</span></span>
+          <span class="chip"><img src="assets/icons/train-criterion.svg" width="14" height="14" alt=""><span class="chip__key">Priority</span><span class="chip__val">Connectivity</span></span>
+          <button class="link-btn criteria__edit" type="button" id="edit-preferences">Edit preferences</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Recommendations + neighbourhood -->
+    <section class="match-section" aria-label="Recommendations and neighbourhood">
+
+      <div class="results">
+        <div class="section-heading">
+          <div class="section-heading__title">
+            <h2 class="h-section">Homes that fit you</h2>
+            <span class="badge badge--light">3 curated matches</span>
+          </div>
+          <button class="sort" type="button" aria-haspopup="listbox" data-toast="Sorting is illustrative in this demo.">
+            Sort: Connectivity first
+            <img src="assets/icons/chevron-down.svg" width="14" height="14" alt="">
+          </button>
+        </div>
+
+        <!-- Featured recommendation -->
+        <article class="featured card" data-prop="cedar" aria-labelledby="cedar-name">
+          <div class="featured__banner">
+            <span class="featured__banner-label">
+              <img src="assets/icons/sparkles-banner.svg" width="16" height="16" alt="">
+              Your best match · Connectivity first
+            </span>
+            <span>94% overall match</span>
+          </div>
+
+          <div class="featured__overview">
+            <figure class="featured__photo">
+              <img src="assets/img/living-room.png" alt="Sunlit living room at Cedar Court with a sofa and balcony views">
+              <figcaption class="photo-count">
+                <img src="assets/icons/images.svg" width="13" height="13" alt="">
+                1 / 8 photos
+              </figcaption>
+            </figure>
+
+            <div class="featured__details">
+              <div class="featured__identity">
+                <div>
+                  <h3 class="featured__name" id="cedar-name">Cedar Court</h3>
+                  <p class="featured__address">Naupada, Thane West · Mumbai region</p>
+                </div>
+                <button class="save-btn save-btn--bare" type="button" data-save="cedar" aria-pressed="false" aria-label="Save Cedar Court">
+                  <img src="assets/icons/heart-featured.svg" width="21" height="21" alt="">
+                </button>
+              </div>
+
+              <p class="featured__price"><strong>₹1.38 Cr</strong><span>+ taxes &amp; registration</span></p>
+              <p class="featured__specs">2BHK&nbsp; ·&nbsp; 735 sq ft carpet&nbsp; ·&nbsp; 2 baths</p>
+
+              <div class="featured__tags">
+                <span class="badge badge--accent">Ready to move</span>
+                <span class="badge badge--plain">East-facing balcony</span>
+              </div>
+
+              <div class="featured__actions">
+                <button class="btn btn--primary" type="button" data-toast="Property pages aren’t part of this demo.">
+                  <img src="assets/icons/arrow-up-right-primary.svg" width="16" height="16" alt="">
+                  View property
+                </button>
+                <button class="btn btn--outline" type="button" data-compare="cedar" aria-pressed="true">
+                  <img src="assets/icons/check.svg" width="16" height="16" alt="">
+                  <span data-compare-label>In comparison</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="why">
+            <div class="why__heading">
+              <h4 class="why__title">
+                <img src="assets/icons/sparkles-why.svg" width="17" height="17" alt="">
+                Why this property?
+              </h4>
+              <span class="why__note">Based on your priorities</span>
+            </div>
+            <ul class="why__reasons">
+              <li class="reason">
+                <img src="assets/icons/reason-train.svg" width="19" height="19" alt="">
+                <strong>8 min from station</strong>
+                <span>Walk to Thane station*</span>
+              </li>
+              <li class="reason">
+                <img src="assets/icons/reason-briefcase.svg" width="19" height="19" alt="">
+                <strong>15 min from workplace</strong>
+                <span>Drive to Wagle Estate*</span>
+              </li>
+              <li class="reason">
+                <img src="assets/icons/reason-circle-check.svg" width="19" height="19" alt="">
+                <strong>Within budget</strong>
+                <span>₹12L below your limit</span>
+              </li>
+              <li class="reason">
+                <img src="assets/icons/reason-route.svg" width="19" height="19" alt="">
+                <strong>High connectivity score</strong>
+                <span>92/100 · rail + road access</span>
+              </li>
+            </ul>
+            <p class="tradeoff">
+              <img src="assets/icons/info.svg" width="14" height="14" alt="">
+              The trade-off: a smaller carpet area than Palm Terraces, in exchange for a shorter commute.
+            </p>
+          </div>
+        </article>
+
+        <!-- Alternatives -->
+        <div class="alternatives">
+          <article class="property card" data-prop="grove" aria-labelledby="grove-name">
+            <div class="property__photo">
+              <img src="assets/img/exterior-grove.png" alt="Exterior of The Grove Residences, a tower set among trees">
+              <span class="badge badge--accent badge--icon property__match">
+                <img src="assets/icons/sparkles-match.svg" width="13" height="13" alt="">89% match
+              </span>
+              <button class="save-btn save-btn--chip" type="button" data-save="grove" aria-pressed="false" aria-label="Save The Grove Residences">
+                <img src="assets/icons/heart-card.svg" width="15" height="15" alt="">
+              </button>
+            </div>
+            <div class="property__info">
+              <div class="property__row">
+                <h3 class="property__name" id="grove-name">The Grove Residences</h3>
+                <p class="property__price">₹1.47 Cr</p>
+              </div>
+              <p class="property__address">Mulund West, Mumbai · 2BHK · 710 sq ft</p>
+              <div class="property__row property__row--meta">
+                <span class="station"><img src="assets/icons/train-card.svg" width="14" height="14" alt="">11 min to station*</span>
+                <button class="compare-toggle" type="button" data-compare="grove" aria-pressed="true">
+                  <img src="assets/icons/square-check.svg" width="15" height="15" alt="">
+                  <span>Compare</span>
+                </button>
+              </div>
+              <p class="property__note">Closer to Mumbai · less budget headroom</p>
+            </div>
+          </article>
+
+          <article class="property card" data-prop="palm" aria-labelledby="palm-name">
+            <div class="property__photo">
+              <img src="assets/img/exterior-palm.png" alt="Exterior of Palm Terraces, a low-rise complex with palm trees">
+              <span class="badge badge--accent badge--icon property__match">
+                <img src="assets/icons/sparkles-match.svg" width="13" height="13" alt="">85% match
+              </span>
+              <button class="save-btn save-btn--chip" type="button" data-save="palm" aria-pressed="false" aria-label="Save Palm Terraces">
+                <img src="assets/icons/heart-card.svg" width="15" height="15" alt="">
+              </button>
+            </div>
+            <div class="property__info">
+              <div class="property__row">
+                <h3 class="property__name" id="palm-name">Palm Terraces</h3>
+                <p class="property__price">₹1.24 Cr</p>
+              </div>
+              <p class="property__address">Airoli, Navi Mumbai · 2BHK · 780 sq ft</p>
+              <div class="property__row property__row--meta">
+                <span class="station"><img src="assets/icons/train-card.svg" width="14" height="14" alt="">12 min to station*</span>
+                <button class="compare-toggle" type="button" data-compare="palm" aria-pressed="true">
+                  <img src="assets/icons/square-check.svg" width="15" height="15" alt="">
+                  <span>Compare</span>
+                </button>
+              </div>
+              <p class="property__note">More space · longer workplace commute</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Neighbourhood + priorities -->
+      <aside class="context" aria-label="Location and priority context">
+        <div class="section-heading section-heading--map">
+          <h2 class="h-section">The neighbourhood</h2>
+          <span class="map-view"><img src="assets/icons/map.svg" width="15" height="15" alt="">Map view</span>
+        </div>
+
+        <div class="map-card card">
+          <div class="map-wrap">
+            <div class="map" role="group" aria-label="Illustrative map of the Mumbai region with three homes">
+              <img class="m m--creek" src="assets/icons/map-thane-creek.svg" alt="" style="--x:280;--y:0;--w:74;--h:337">
+              <span class="m m--park" style="--x:18;--y:30;--w:106;--h:83;--r:22"></span>
+              <span class="m m--park" style="--x:47;--y:253;--w:74;--h:65;--r:18"></span>
+              <span class="m m--block" style="--x:132;--y:12;--w:51;--h:56"></span>
+              <span class="m m--block" style="--x:198;--y:14;--w:59;--h:49"></span>
+              <span class="m m--block" style="--x:19;--y:132;--w:56;--h:65"></span>
+              <span class="m m--block" style="--x:132;--y:140;--w:42;--h:58"></span>
+              <span class="m m--block" style="--x:198;--y:165;--w:45;--h:45"></span>
+              <span class="m m--block" style="--x:149;--y:258;--w:43;--h:63"></span>
+              <span class="m m--block" style="--x:218;--y:274;--w:60;--h:41"></span>
+              <span class="m m--block" style="--x:354;--y:27;--w:45;--h:61"></span>
+              <span class="m m--block" style="--x:351;--y:189;--w:56;--h:44"></span>
+              <span class="m m--block" style="--x:356;--y:260;--w:42;--h:50"></span>
+
+              <span class="m m--fill" style="--x:0;--y:0;--w:420;--h:337">
+                <span class="m__inset" style="inset:25.22% 14.53% 23.15% 23.35%"><img src="assets/icons/map-local-streets.svg" alt=""></span>
+              </span>
+              <span class="m m--fill" style="--x:0;--y:65;--w:420;--h:85">
+                <span class="m__inset" style="inset:-2.94% -0.11% -2.94% 0"><img src="assets/icons/map-regional-road.svg" alt=""></span>
+              </span>
+              <span class="m m--fill" style="--x:205;--y:0;--w:16;--h:337">
+                <span class="m__inset" style="inset:0 -9.35% 0 -9.21%"><img src="assets/icons/map-central-railway.png" alt=""></span>
+              </span>
+              <span class="m m--fill" style="--x:89;--y:73;--w:125;--h:51">
+                <span class="m__inset" style="inset:-2.45% -0.11% -2.93% -0.67%"><img src="assets/icons/map-workplace-route.png" alt=""></span>
+              </span>
+
+              <span class="m m--locality" style="--x:142;--y:36">Thane West</span>
+              <span class="m m--locality m--locality-sm" style="--x:111;--y:285">Mulund</span>
+              <span class="m m--locality m--locality-sm" style="--x:342;--y:154">Airoli</span>
+
+              <span class="m map-marker" style="--x:45;--y:68">
+                <span class="map-marker__symbol"><img src="assets/icons/map-briefcase.svg" width="13" height="13" alt=""></span>
+                <span class="map-marker__label">Wagle Estate</span>
+              </span>
+              <span class="m map-station" style="--x:220;--y:171">
+                <img src="assets/icons/map-station-dot.svg" width="9" height="9" alt="">
+                <span>Thane station</span>
+              </span>
+
+              <button class="m map-pin is-active" type="button" style="--x:151;--y:107" data-pin="cedar" aria-pressed="true" aria-label="Cedar Court, ₹1.38 Cr">
+                <img src="assets/icons/map-house.svg" width="13" height="13" alt="">₹1.38 Cr
+              </button>
+              <button class="m map-pin" type="button" style="--x:90;--y:227" data-pin="grove" aria-pressed="false" aria-label="The Grove Residences, ₹1.47 Cr">₹1.47 Cr</button>
+              <button class="m map-pin" type="button" style="--x:314;--y:202" data-pin="palm" aria-pressed="false" aria-label="Palm Terraces, ₹1.24 Cr">₹1.24 Cr</button>
+
+              <div class="map-tools">
+                <button type="button" aria-label="Zoom in" data-toast="The map is a static illustration."><img src="assets/icons/plus.svg" width="15" height="15" alt=""></button>
+                <button type="button" aria-label="Zoom out" data-toast="The map is a static illustration."><img src="assets/icons/minus.svg" width="15" height="15" alt=""></button>
+              </div>
+              <p class="map-disclaimer">Illustrative map · not to geographic scale</p>
+            </div>
+          </div>
+
+          <div class="location" aria-live="polite">
+            <div class="location__header">
+              <div>
+                <h3 class="location__name" id="loc-name">Cedar Court, Naupada</h3>
+                <p class="location__tagline" id="loc-tagline">Rail access without the budget stretch.</p>
+              </div>
+              <button class="icon-btn" type="button" aria-label="Centre map on selected home" data-toast="The map is a static illustration.">
+                <img src="assets/icons/locate-fixed.svg" width="20" height="20" alt="">
+              </button>
+            </div>
+            <div class="commute">
+              <div class="commute__tile">
+                <span class="commute__label">Thane station</span>
+                <span class="commute__value" id="loc-station">8 min walk*</span>
+              </div>
+              <div class="commute__tile">
+                <span class="commute__label">Demo workplace</span>
+                <span class="commute__value" id="loc-work">15 min drive*</span>
+              </div>
+            </div>
+            <p class="location__disclaimer">*Demo estimates, not verified routes. Workplace assumed at Wagle Estate, Thane; off-peak driving. Actual travel times vary.</p>
+          </div>
+        </div>
+
+        <section class="priority card" aria-labelledby="priority-title">
+          <div class="priority__heading">
+            <h3 id="priority-title">What drives your match</h3>
+            <img src="assets/icons/sliders-priority.svg" width="17" height="17" alt="">
+          </div>
+          <div class="weight"><span class="weight__label">Connectivity</span><span class="weight__track" role="img" aria-label="50 percent"><span class="weight__bar" style="width:50%"></span></span><span class="weight__value">50%</span></div>
+          <div class="weight"><span class="weight__label">Budget fit</span><span class="weight__track" role="img" aria-label="30 percent"><span class="weight__bar" style="width:30%"></span></span><span class="weight__value">30%</span></div>
+          <div class="weight"><span class="weight__label">Space &amp; comfort</span><span class="weight__track" role="img" aria-label="20 percent"><span class="weight__bar" style="width:20%"></span></span><span class="weight__value">20%</span></div>
+          <p class="priority__note">Illustrative scores explain the ranking, not a valuation or a guarantee of property quality.</p>
+        </section>
+      </aside>
+    </section>
+
+    <!-- Decision comparison -->
+    <section class="comparison" id="comparison" aria-labelledby="comparison-title">
+      <div class="section-heading">
+        <div class="comparison__title">
+          <img src="assets/icons/columns-comparison.svg" width="20" height="20" alt="">
+          <h2 class="h-section" id="comparison-title">A clearer choice, side by side</h2>
+          <span class="comparison__count" id="comparison-count" aria-live="polite">3 homes selected</span>
+        </div>
+        <button class="btn btn--light" type="button" data-toast="The full comparison view isn’t part of this demo.">
+          <img src="assets/icons/arrow-up-right-dark.svg" width="16" height="16" alt="">
+          Open full comparison
+        </button>
+      </div>
+
+      <div class="table-scroll">
+        <div class="table card" role="table" aria-label="Property comparison">
+          <div class="table__criteria" role="rowgroup">
+            <div class="table__head" role="columnheader">What matters to you</div>
+            <div class="table__cell" role="rowheader">Asking price</div>
+            <div class="table__cell" role="rowheader">Carpet area · 2BHK</div>
+            <div class="table__cell" role="rowheader">Station / workplace*</div>
+            <div class="table__cell" role="rowheader">Connectivity score</div>
+          </div>
+
+          <div class="table__col table__col--best" data-col="cedar" role="rowgroup">
+            <div class="table__head" role="columnheader">
+              <span class="table__name">Cedar Court <img src="assets/icons/sparkles-match.svg" width="13" height="13" alt=""></span>
+              <span class="table__sub">Best fit for your connectivity priority</span>
+            </div>
+            <div class="table__cell table__cell--strong" role="cell">₹1.38 Cr · ₹12L below budget</div>
+            <div class="table__cell" role="cell">735 sq ft</div>
+            <div class="table__cell" role="cell">8 min walk / 15 min drive</div>
+            <div class="table__cell table__cell--strong" role="cell">92 / 100 · strongest connectivity</div>
+          </div>
+
+          <div class="table__col" data-col="grove" role="rowgroup">
+            <div class="table__head" role="columnheader">
+              <span class="table__name">The Grove Residences</span>
+              <span class="table__sub">Mulund West · closer to Mumbai</span>
+            </div>
+            <div class="table__cell table__cell--strong" role="cell">₹1.47 Cr · ₹3L below budget</div>
+            <div class="table__cell" role="cell">710 sq ft</div>
+            <div class="table__cell" role="cell">11 min walk / 24 min drive</div>
+            <div class="table__cell table__cell--strong" role="cell">87 / 100</div>
+          </div>
+
+          <div class="table__col" data-col="palm" role="rowgroup">
+            <div class="table__head" role="columnheader">
+              <span class="table__name">Palm Terraces</span>
+              <span class="table__sub">Airoli · more room for your budget</span>
+            </div>
+            <div class="table__cell table__cell--strong" role="cell">₹1.24 Cr · ₹26L below budget</div>
+            <div class="table__cell" role="cell">780 sq ft</div>
+            <div class="table__cell" role="cell">12 min walk / 32 min drive</div>
+            <div class="table__cell table__cell--strong" role="cell">81 / 100</div>
+          </div>
+
+          <p class="table__empty" id="table-empty" hidden>Select “Compare” on a home to see it here.</p>
+        </div>
+      </div>
+
+      <div class="transparency">
+        <p>All listings, prices and scores are illustrative. *Estimated demo commutes to Wagle Estate; verify routes, costs and property details before deciding.</p>
+        <span class="trust"><img src="assets/icons/shield-check.svg" width="13" height="13" alt="">Your priorities. Explained.</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="js/app.js"></script>
+</body>
+</html>
